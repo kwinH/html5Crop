@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+</head>
+<style>
+
+</style>
+<body>
+
+
+<img src="http://pic.qiantucdn.com/58pic/11/09/64/39i58PICmgE.jpg" id='img'>
+
+
+<select name="type" id="type">
+<option value="1">圆形</option>
+<option value="2">矩形</option>
+</select>
+
+<script charset="utf-8" src="crop.js"></script>
+<script type="text/javascript">
+$(function(){
+
+var type=parseInt($('#type').val());
+$('#img').crop(type,cropBack);
+
+$('#type').change(function(){
+  var type=parseInt($(this).val());
+$('#img').crop(type,cropBack);
+});
+
+});
+
+function cropBack(p){
+console.log(p);
+}
+</script>
+
+</body>
+</html>
