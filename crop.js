@@ -22,6 +22,7 @@ jQuery.fn.extend({
 
     type = type || 1;
     var position = {
+      img:$this.attr('src'),
       type: type,
       startX: 0,
       startY: 0,
@@ -57,9 +58,7 @@ jQuery.fn.extend({
           strokeRect();
         }
       }
-      if (typeof(callback) === 'function') {
-        callback(position);
-      }
+
     });
 
     $canvasObj.mouseup(function() {
@@ -83,6 +82,9 @@ jQuery.fn.extend({
         strokeRect();
       }
 
+      if (typeof(callback) === 'function') {
+        callback(position);
+      }
     });
 
     function getRadius(x1, y1, x2, y2) {
