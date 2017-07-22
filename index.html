@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <title></title>
 <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="./crop.js"></script>
 </head>
 <style>
 
@@ -19,9 +20,9 @@
 <option value="2">矩形</option>
 </select>
 
-<script charset="utf-8" src="crop.js"></script>
+
 <script type="text/javascript">
-$(function(){
+$(window).load(function() { 
 
 var type=parseInt($('#type').val());
 $('#img').crop(type,cropBack);

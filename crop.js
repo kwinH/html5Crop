@@ -10,7 +10,7 @@ jQuery.fn.extend({
     $this = $(this);
   
   var canvasId = $this.attr('id')+'Canvas';
-
+console.log($this.height());
 
     if($("#"+canvasId).length == 0 ){  
    attr = 'width='+$this.width()+' height='+$this.height()+' style=position:fixed;top:'+$this.offset().top+'px;left:'+$this.offset().left+'px;';
@@ -42,13 +42,15 @@ jQuery.fn.extend({
     var c = $canvasObj[0];
     var ctx = c.getContext("2d");
 
-    $canvasObj.mousedown(function() {
+    $canvasObj.mousedown(function(ev) {
+	var  event = window.event || ev;
       c.height = c.height;
       position.startX = event.offsetX;
       position.startY = event.offsetY;
 
       // 移动事件对象
       document.onmousemove = function(ev) {
+		  var  event = window.event || ev;
         position.endX = event.offsetX;
         position.endY = event.offsetY;
 
@@ -61,17 +63,14 @@ jQuery.fn.extend({
 
     });
 
-    $canvasObj.mouseup(function() {
-
+    $canvasObj.mouseup(function(ev) {
+		var  event = window.event || ev;
       // 当松开鼠标时注意取消移动事件
       document.onmouseup = function(ev) {
-        // event事件对象
-        var oEvent = ev || window.event;
-
         document.onmousemove = null;
-        oEvent.preventDefault();
+        event.preventDefault();
       }
-
+     
       position.endX = event.offsetX;
       position.endY = event.offsetY;
 
